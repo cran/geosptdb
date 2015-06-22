@@ -1,0 +1,15 @@
+citHeader("To cite package geosptdb in publications use:")
+
+
+citEntry(entry="Manual",
+ title = "geosptdb: Spatio-Temporal; Inverse Distance Weighting and Radial Basis Functions with Distance-Based
+        Regression.",
+ 
+author = personList(person(given="C.", family="Melo"), person(given="O.", family="Melo")),
+ 
+year = 2015,
+ url="geosptdb.r-forge.r-project.org/", note ="R package version 0.5-0", 
+textVersion = paste("Melo, C., Melo, O. 2015. geosptdb: Spatio-Temporal; Inverse Distance Weighting and Radial Basis Functions with Distance-Based
+        Regression",
+ "R package version 0.5-0")
+)

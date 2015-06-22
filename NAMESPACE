@@ -1,0 +1,10 @@
+export(cp.xnews, criterioST.cv, dblm, extractFormula, graph.rbfST, rbfST.cv, rbfST.cv1, rbfST.tcv, 
+       rbfST, idwST, idwST.cv, idwST.cv1, idwST.tcv, standardize)
+import(StatMatch, gsl, FD)
+importFrom(sp, coordinates,
+           "coordinates<-", "gridded<-", spplot, spsample)
+importFrom(minqa, bobyqa)
+importFrom(limSolve, Solve)
+importFrom(fields, rdist)
+importFrom(geospt, RBF.phi)
+
