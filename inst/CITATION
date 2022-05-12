@@ -2,14 +2,12 @@ citHeader("To cite package geosptdb in publications use:")
 
 
 citEntry(entry="Manual",
- title = "geosptdb: Spatio-Temporal; Inverse Distance Weighting and Radial Basis Functions with Distance-Based
-        Regression.",
+ title = "Spatio-Temporal Radial Basis Functions with Distance-Based Methods (Optimization, Prediction and Cross Validation)",
  
-author = personList(person(given="C.", family="Melo"), person(given="O.", family="Melo")),
+author = personList(person(given="C.E.", family="Melo"), person(given="O.O.", family="Melo")),
  
-year = 2015,
- url="geosptdb.r-forge.r-project.org/", note ="R package version 0.5-0", 
-textVersion = paste("Melo, C., Melo, O. 2015. geosptdb: Spatio-Temporal; Inverse Distance Weighting and Radial Basis Functions with Distance-Based
-        Regression",
- "R package version 0.5-0")
+year = 2022,
+ url="https://CRAN.R-project.org/package=geosptdb", note ="R package version 1.0-0", 
+textVersion = paste("Melo, C.E., Melo, O.O. 2022. Spatio-Temporal Radial Basis Functions with Distance-Based Methods (Optimization, Prediction and Cross Validation)",
+ "R package version 1.0-0")
 )

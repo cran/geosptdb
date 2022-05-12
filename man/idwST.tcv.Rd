@@ -4,7 +4,7 @@
 \title{
 table of idw spatio-temporal leave-one-out cross validation
 }
-\description{                                                                
+\description{
 Generates a table with the results of inverse distance weighting spatio-temporal interpolation (\emph{idwST}) from leave-one-out cross validation method.
 }
 \usage{
@@ -25,7 +25,7 @@ minimizing the root-mean-square prediction errors using cross-validation. Using 
 Leave-one-out cross validation (LOOCV) consists of removing data, one at a time, and then trying to predict it. Next, the predicted value can be compared to the actual (observed) value to assess how well the prediction is working. The observed value is left out because \emph{idwST} would otherwise predict the value itself.
 }
 \value{
-data frame contain prediction columns, observed values, residuals, the prediction variance, zscore (residual divided by standard error) 
+data frame contain prediction columns, observed values, residuals, the prediction variance, zscore (residual divided by standard error)
 which left with NA's, the fold column which is associated to cross-validation count, coordinates data and time. Prediction columns and residuals are obtained from cross-validation data points.
 }
 \seealso{
@@ -36,7 +36,7 @@ which left with NA's, the fold column which is associated to cross-validation co
 data(croatiadb)
 coordinates(croatiadb) <- ~x+y
 idw.t <- idwST.tcv(MTEMP~1, croatiadb, n.neigh=10, C=1.0054, factor.p=1.9585)
-criterioST.cv(idw.t)
+criteriaST.cv(idw.t)
 }
 }
 

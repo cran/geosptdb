@@ -2,9 +2,9 @@
 \alias{idwST}
 
 \title{
-Inverse Distance Weighting (IDW) function for spatio-temporal prediction. 
+Inverse Distance Weighting (IDW) function for spatio-temporal prediction.
 }
-\description{               
+\description{
 This function performs spatio-temporal interpolation. Here \emph{idwST} is in a local neighborhood. This interpolation method considers the value of a point can be obtained from the weighted sum of values of the regionalized variable of closest neighbors. The general formula for the IDW is given by:
 \deqn{
 \hat{z}_0(st)=\sum_{i=1}^n \lambda_i z_i(st)
@@ -47,43 +47,43 @@ column contains NA's
 }
 
 \references{
-Li L, Losser T, Yorke C, Piltner R. (2014). \emph{Fast inverse distance weighting-based spatiotemporal interpolation: a web-based application of interpolating daily fine particulate matter PM2:5 in the contiguous U.S. using parallel programming and k-d tree.} Int. J. Environ. Res. Public Health, 11: 9101-9141. \href{http://www.mdpi.com/journal/ijerph}{[link]} 
+Li L, Losser T, Yorke C, Piltner R. (2014). \emph{Fast inverse distance weighting-based spatiotemporal interpolation: a web-based application of interpolating daily fine particulate matter PM2:5 in the contiguous U.S. using parallel programming and k-d tree.} Int. J. Environ. Res. Public Health, 11: 9101-9141. \href{https://www.mdpi.com/journal/ijerph}{[link]}
 }
 
 
 \examples{
 # Loading Croatia data
-data(croatiadb)
-coordinates(croatiadb) <- ~x+y
+data(croatia2008)
+coordinates(croatia2008) <- ~x+y
 
 # prediction case: one point
 point <- data.frame(670863,5043464,5)
 names(point) <- c("x","y","t")
 
 coordinates(point) <- ~x+y
-idwST(MTEMP~1, data=croatiadb, newdata=point, n.neigh=60, C=1, factor.p=2)
+idwST(MTEMP~1, data=croatia2008, newdata=point, n.neigh=60, C=1, factor.p=2)
 
 \dontrun{
 # prediction case: a grid of points Croatia (year 2008)
 data(croatia)
 points <- spsample(croatia, n=5000, type="regular")
 
-data(croatiadb)
-coordinates(croatiadb)<-~x+y
+data(croatia2008)
+coordinates(croatia2008)<-~x+y
 
 GridsT <- vector(mode = "list", length = 12)
 
-for(i in 1:12){ 
+for(i in 1:12){
 GridsT[[i]] <- data.frame(points@coords,i)
 names(GridsT[[i]]) <- c("x","y","t")
 }
 
 idw.croatia <- data.frame(matrix(NA, ncol = 14, nrow=nrow(GridsT[[1]])))
 pb <- txtProgressBar(min = 0, max = 12, char = "=", style = 3)
-for(i in 1:12){ 
+for(i in 1:12){
 coordinates(GridsT[[i]]) <- c("x", "y")
-idw.croatia[,i+2] <- idwST(MTEMP~1, croatiadb, newdata=GridsT[[i]], n.neigh=10, C=1, 
-                          factor.p=2, progress=FALSE)[,4]                  
+idw.croatia[,i+2] <- idwST(MTEMP~1, croatia2008, newdata=GridsT[[i]], n.neigh=10, C=1,
+                          factor.p=2, progress=FALSE)[,4]
 setTxtProgressBar(pb, i)
 }
 close(pb)
@@ -99,9 +99,9 @@ gridded(idw.croatia) <- TRUE
 # show prediction map
 pal2 <- colorRampPalette(c("blue3", "wheat1", "red3"))
 
-p1 <- spplot(idw.croatia[,1:12], cuts=30, col.regions=pal2(35), colorkey=F, 
-            scales = list(draw =T,cex=0.6, abbreviate=TRUE,minlength=1), pch=0.3, 
-            cex.lab=0.3, cex.title=0.3, auto.key = F, main = "Earth's average 
+p1 <- spplot(idw.croatia[,1:12], cuts=30, col.regions=pal2(35), colorkey=F,
+            scales = list(draw =T,cex=0.6, abbreviate=TRUE,minlength=1), pch=0.3,
+            cex.lab=0.3, cex.title=0.3, auto.key = F, main = "Earth's average
             temperature IDW map 2008", key.space=list(space="right", cex=0.8))
 
 split.screen( rbind(c(0, 1,0,1), c(1,1,0,1)))
@@ -109,7 +109,7 @@ split.screen(c(1,2), screen=1)-> ind
 screen( ind[1])
 p1
 screen( ind[2])
-image.plot(legend.only=TRUE, legend.width=0.5, col=pal2(100), 
+image.plot(legend.only=TRUE, legend.width=0.5, col=pal2(100),
            smallplot=c(0.7,0.75, 0.3,0.7), zlim=c(min(idw.croatia@data),
            max(idw.croatia@data)), axis.args = list(cex.axis = 0.7))
 close.screen( all=TRUE)
