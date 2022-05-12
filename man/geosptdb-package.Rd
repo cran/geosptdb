@@ -12,8 +12,8 @@ of the principal coordinates of a new individual from Gower's distance.
 \tabular{ll}{
 Package: \tab geosptdb\cr
 Type: \tab Package\cr
-Version: \tab 1.0-0\cr
-Date: \tab 2022-05-10\cr
+Version: \tab 1.0-1\cr
+Date: \tab 2022-05-12\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }

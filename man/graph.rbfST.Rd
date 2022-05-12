@@ -7,7 +7,7 @@ Graph that describes the behavior of the optimized \emph{eta} and \emph{rho} par
 \description{
 Function for plotting the RMSPE for several values of the smoothing parameter
 \emph{eta} with the same dataset. A curve is fitted to the points, and
-then the optimal \emph{eta} that provides the smallest RMSPE is determined from the 
+then the optimal \emph{eta} that provides the smallest RMSPE is determined from the
 curve, by the \code{\link[stats]{optimize}} function from the \code{stats}
 package.
 }
@@ -38,10 +38,10 @@ Returns a graph that describes the behavior of the optimized \emph{eta} or \emph
 }
 
 \references{
-Johnston, K., Ver, J., Krivoruchko, K., Lucas, N. 2001. \emph{Using ArcGIS Geostatistical Analysis}. ESRI.
+Johnston, K., Ver, J., Krivoruchko, K., Lucas, N. (2001). \emph{Using ArcGIS Geostatistical Analysis}. ESRI.
 
 Melo, C. E. (2012). \emph{Analisis geoestadistico espacio tiempo basado en distancias y splines con
-aplicaciones}. PhD. Thesis. Universitat de Barcelona. 276 p. \href{http://www.tdx.cat/bitstream/handle/10803/101202/CEMM_TESIS.pdf}{[link]} 
+aplicaciones}. PhD. Thesis. Universitat de Barcelona. 276 p. \href{http://www.tdx.cat/bitstream/handle/10803/101202/CEMM_TESIS.pdf}{[link]}
 }
 \seealso{
 \code{\link{rbfST}}, \code{\link{rbfST.cv}}
@@ -52,19 +52,19 @@ aplicaciones}. PhD. Thesis. Universitat de Barcelona. 276 p. \href{http://www.td
 data(croatiadb)
 coordinates(croatiadb)<-~x+y
 # optimizing eta
-graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, eta.opt=TRUE, 
+graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, eta.opt=TRUE,
              rho.opt=FALSE, n.neigh=30, func="TPS", np=40,  eta.dmax=2, P.T=TRUE)
 # optimizing rho
-graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, eta.opt=FALSE, 
+graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, eta.opt=FALSE,
              rho.opt=TRUE, n.neigh=30, func="M", np=20, rho.dmax=2, P.T=TRUE)
 # optimizing eta and rho
-tps.lo <- graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, 
-       eta.opt=TRUE,rho.opt=TRUE, n.neigh=25, func="TPS",  eta.dmax=0.2, 
+tps.lo <- graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb,
+       eta.opt=TRUE,rho.opt=TRUE, n.neigh=25, func="TPS",  eta.dmax=0.2,
        rho.dmax=0.2, xo=c(0.1,0.1), iter=50)
 tps.lo  # best combination of eta and rho obtained
 # lattice of RMSPE values associated with a range of eta and rho, without optimization
-tps.la <- graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb, 
-       eta.opt=FALSE, rho.opt=FALSE, n.neigh=30,  func="TPS", np=10,  eta.dmax=0.2, 
+tps.la <- graph.rbfST(MTEMP~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=croatiadb,
+       eta.opt=FALSE, rho.opt=FALSE, n.neigh=30,  func="TPS", np=10,  eta.dmax=0.2,
        rho.dmax=0.2)
 tps.l$table  # best combination of eta and rho obtained
 tps.l$spplot  # lattice of RMSPE
