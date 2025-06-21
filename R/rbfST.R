@@ -21,7 +21,7 @@ assign("rbfST",
            b <- RBF.phi(dist.vec.cerca,eta,func)
            I.PHI <- if (func %in% c("M","ST","CRS","TPS","TRI")) solve(PHI)
            else chol2inv(chol(PHI))
-           Lambda <- I.PHI%*%(b-as.matrix(X)%*%(Solve(t(X)%*%I.PHI%*%X))%*%(t(X)%*%I.PHI%*%b-x0))
+           Lambda <- I.PHI%*%(b-as.matrix(X)%*%(ginv(t(X)%*%I.PHI%*%X))%*%(t(X)%*%I.PHI%*%b-x0))
            pred <- t(Lambda)%*%z[vc]
            pred
          }
@@ -32,10 +32,10 @@ assign("rbfST",
            if(progress)
            setTxtProgressBar(pb, i)
          }
-         if(progress) 
+         if(progress)
          close(pb)
          rbf.pred <- data.frame(s0,Pred,NA)
          names(rbf.pred) <- c("x","y","t","var1.pred","var1.var")
          rbf.pred
        }
-)  
+)
